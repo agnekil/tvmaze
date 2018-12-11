@@ -1,8 +1,9 @@
 <template>
-<div class="card">
-    <div class="card-wrapper" v-for="show in TvShows">
+<div class="card-wrapper">
+    <div class="card" v-for="show in TvShows" :key="show.show.id">
+    <img :src="show.show.image.medium" alt="poster">
         <div class="card-image"></div>
-        <div class="card-content" >{{show.show.name}}</div>
+        <div class="card-content">{{show.show.name}}</div>
     </div>
     </div>
 </template>
@@ -33,12 +34,20 @@ export default {
 
 <style scoped>
 .card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card {
     background-color: rgb(235, 235, 235);
-    height: 400px;
-    width: 200px;
+    height: 350px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px;
 }
 </style>
