@@ -1,7 +1,9 @@
 <template>
 <div class="card-wrapper">
     <div class="card" v-for="show in TvShows" :key="show.show.id">
-        <img :src="show.show.image.medium" alt="poster">
+        <a :href="show.show.url">
+            <img :src="show.show.image.medium" alt="poster">
+        </a>
         <div class="card-content">
             <h1>{{show.show.name}}</h1>
         </div>
@@ -58,5 +60,9 @@ h1 {
 
 img {
     width: 200px;
+}
+
+a {
+    text-decoration: none;
 }
 </style>
