@@ -1,4 +1,8 @@
 <template>
+<div>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
 <div class="card-wrapper">
     <div class="card" v-for="show in TvShows" :key="show.show.id">
         <a :href="show.show.url">
@@ -6,7 +10,11 @@
         </a>
         <div class="card-content">
             <h1>{{show.show.name}}</h1>
+            <div class="rating-wrapper">
+            <i class="fas fa-star"></i><p class="rating" v-if="show.show.rating.average">{{show.show.rating.average}}</p><p v-else>-</p>
+            </div>
         </div>
+    </div>
     </div>
     </div>
 </template>
@@ -47,8 +55,8 @@ export default {
 
 .card {
     background-color: rgb(235, 235, 235);
-    height: 400px;
-    width: 200px;
+    height: 350px;
+    width: 150px;
     display: flex;
     flex-direction: column;
     margin: 15px;
@@ -59,10 +67,26 @@ h1 {
 }
 
 img {
-    width: 200px;
+    width: 150px;
 }
 
 a {
     text-decoration: none;
+}
+
+.rating-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.rating {
+    margin: 0;
+    padding: 0;
+}
+
+i {
+    margin: 5px;
 }
 </style>
