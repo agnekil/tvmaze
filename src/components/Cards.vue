@@ -11,7 +11,7 @@
                 <div class="card-content">
                     <h1>{{show.show.name}}</h1>
                     <div class="rating-wrapper">
-                        <i class="fas fa-star"></i><p class="rating" v-if="show.show.rating.average">{{show.show.rating.average}}</p><p v-else>-</p>
+                        <i class="fas fa-star"></i><p class="rating" v-if="show.show.rating.average">{{show.show.rating.average}}</p><p class=" rating" v-else>-</p>
                     </div>
                 </div>
             </div>
