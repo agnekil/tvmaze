@@ -1,21 +1,21 @@
 <template>
-<div>
-<head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-</head>
-<div class="card-wrapper">
-    <div class="card" v-for="show in TvShows" :key="show.show.id">
-        <a :href="show.show.url">
-            <img :src="show.show.image.medium" alt="poster">
-        </a>
-        <div class="card-content">
-            <h1>{{show.show.name}}</h1>
-            <div class="rating-wrapper">
-            <i class="fas fa-star"></i><p class="rating" v-if="show.show.rating.average">{{show.show.rating.average}}</p><p v-else>-</p>
+    <div>
+        <head>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        </head>
+        <div class="card-wrapper">
+            <div class="card" v-for="show in TvShows" :key="show.show.id">
+                <a :href="show.show.url">
+                    <img :src="show.show.image.medium" alt="poster">
+                </a>
+                <div class="card-content">
+                    <h1>{{show.show.name}}</h1>
+                    <div class="rating-wrapper">
+                        <i class="fas fa-star"></i><p class="rating" v-if="show.show.rating.average">{{show.show.rating.average}}</p><p v-else>-</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         fetchTvShows: function() {
-            fetch("http://api.tvmaze.com/search/shows?q=:suits")
+            fetch("http://api.tvmaze.com/search/shows?q=:friends")
             .then(response => response.json())
             .then(response => {
                 this.TvShows.push(...response)
@@ -55,7 +55,7 @@ export default {
 
 .card {
     background-color: rgb(235, 235, 235);
-    height: 350px;
+    height: 330px;
     width: 150px;
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@ export default {
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 img {
@@ -83,7 +83,7 @@ a {
 
 .rating {
     margin: 0;
-    padding: 0;
+    padding-top: 3px;
 }
 
 i {
