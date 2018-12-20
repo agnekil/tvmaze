@@ -1,10 +1,10 @@
 <template>
     <div class="header">
         <div class="welcome-message">{{msg}}</div>
-        <div class="search-field">
-            <input type="text" placeholder="Search shows and people">
+        <form class="search-field" @submit.prevent="$emit('searchTvShows', search)">
+            <input v-model="search" type="text" placeholder="Search shows and people">
             <button>Search</button>
-        </div>
+        </form>
         <div class="menu">
             <ul>
                 <li>Shows</li>
@@ -20,6 +20,11 @@ export default {
     name: "Header",
     props: {
         msg: String
+    },
+    data() {
+        return{
+            search: ""
+        }
     }
 }
 </script>

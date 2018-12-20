@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header msg="Welcome to TV-maze"></Header>
-    <Cards></Cards>
+    <Header msg="Welcome to TV-maze" @searchTvShows="searchTvShows($event)"></Header>
+    <Cards :tvShows="TvShows"></Cards>
   </div>
 </template>
 
@@ -14,7 +14,24 @@ export default {
   components: {
     Header,
     Cards
-  }
+  },
+    data() {
+        return {
+            search: "",
+            TvShows: []
+        }
+    },
+    methods: {
+        searchTvShows: function(search){
+            fetch(`http://api.tvmaze.com/search/shows?q=:${search}`)
+            .then(response => response.json())
+            .then(response => {
+                this.TvShows.push(...response)
+                this.search = search
+                console.log(this.TvShows, search, this.search)
+            })
+        }
+    }
 }
 </script>
 

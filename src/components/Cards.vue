@@ -4,7 +4,7 @@
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
         </head>
         <div class="card-wrapper">
-            <div class="card" v-for="show in TvShows" :key="show.show.id">
+            <div class="card" v-for="show in tvShows" :key="show.show.id">
                 <a :href="show.show.url">
                     <img :src="show.show.image.medium" alt="poster">
                 </a>
@@ -24,16 +24,19 @@ export default {
     name: "Cards",
     data() {
         return {
-        TvShows: []
+            TvShows: []
         }
+    },
+    props: {
+        search: String,
+        tvShows: Array
     },
     methods: {
         fetchTvShows: function() {
-            fetch("http://api.tvmaze.com/search/shows?q=:friends")
+            fetch(`http://api.tvmaze.com/search/shows?q=:friends`)
             .then(response => response.json())
             .then(response => {
                 this.TvShows.push(...response)
-                console.log(this.TvShows)
             })
         }
     },
