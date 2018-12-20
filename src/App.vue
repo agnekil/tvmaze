@@ -26,6 +26,7 @@ export default {
             fetch(`http://api.tvmaze.com/search/shows?q=:${search}`)
             .then(response => response.json())
             .then(response => {
+                this.TvShows = []
                 this.TvShows.push(...response)
                 this.search = search
                 console.log(this.TvShows, search, this.search)
